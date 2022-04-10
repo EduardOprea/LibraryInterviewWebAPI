@@ -1,0 +1,617 @@
+{
+	"info": {
+		"_postman_id": "647fc2cf-69e4-4771-9edd-b008ed0ee72b",
+		"name": "WebAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "Books",
+					"item": [
+						{
+							"name": "/api/Books",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.globals.set(\"bookCreated\", false);\r",
+											"let newTitle = pm.iterationData.get(\"newTitle\");\r",
+											"let newAuthor = pm.iterationData.get(\"newAuthor\");\r",
+											"let newISBN = pm.iterationData.get(\"newISBN\");\r",
+											"let newBaseRentPrice = pm.iterationData.get(\"newBaseRentPrice\");\r",
+											"let newCurrency = pm.iterationData.get(\"newCurrency\");\r",
+											"\r",
+											"if(!newTitle || !newAuthor || !newISBN || newBaseRentPrice < 0){\r",
+											"    pm.test(\"Book creation returns status code 422 parameters are invalid\", function(){\r",
+											"        pm.response.to.have.status(422)\r",
+											"    });\r",
+											"}\r",
+											"else{\r",
+											"    pm.test(\"Book creation returns status code 201\", function(){\r",
+											"        pm.response.to.have.status(201)\r",
+											"    });\r",
+											"    pm.globals.set(\"newBookId\", pm.response.json())\r",
+											"    pm.globals.set(\"bookCreated\", true)\r",
+											"}\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"{{newTitle}}\",\n  \"author\": \"{{newAuthor}}\",\n  \"isbn\": \"{{newISBN}}\",\n  \"baseRentPrice\": {{newBaseRentPrice}},\n  \"currency\": \"{{newCurrency}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Books",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Books"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"title\": \"culpa elit\",\n  \"author\": \"ut ipsum pariatur tempor\",\n  \"isbn\": \"mollit exercitation occaecat\",\n  \"baseRentPrice\": 5,\n  \"currency\": \"EUR\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Books",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Books"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "21013651"
+								}
+							]
+						},
+						{
+							"name": "/api/Books",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function()\r",
+											"{\r",
+											"    pm.response.to.have.status(200)\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Books",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Books"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Books",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Books"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": -54652826,\n    \"title\": \"amet in sunt minim deserunt\",\n    \"author\": \"ad officia\",\n    \"rentPrice\": 14851.80443868041,\n    \"currency\": \"RON\",\n    \"isbn\": \"Duis la\"\n  },\n  {\n    \"id\": 71739203,\n    \"title\": \"deserunt quis occaecat dolore sed\",\n    \"author\": \"nisi ut est\",\n    \"rentPrice\": 59702839.50384471,\n    \"currency\": \"EUR\",\n    \"isbn\": \"Lorem offi\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/Books/count-by-isbn",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response = pm.response.json();\r",
+											"let iterationExpectedBookCount = pm.iterationData.get(\"expectedBookCount\");\r",
+											"pm.test(\"Get book count by isbn returns OK\", function(){\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Books/count-by-isbn?ISBN=978-47-3-970461-4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Books",
+										"count-by-isbn"
+									],
+									"query": [
+										{
+											"key": "ISBN",
+											"value": "978-47-3-970461-4"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Books/count-by-isbn?ISBN=nulla esse laborum fugiat",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Books",
+												"count-by-isbn"
+											],
+											"query": [
+												{
+													"key": "ISBN",
+													"value": "nulla esse laborum fugiat"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "21013651"
+								}
+							]
+						},
+						{
+							"name": "/api/Books/:id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if(pm.globals.get(\"bookCreated\") == true) {\r",
+											"let newTitle = pm.iterationData.get(\"newTitle\");\r",
+											"let newAuthor = pm.iterationData.get(\"newAuthor\");\r",
+											"let newISBN = pm.iterationData.get(\"newISBN\");\r",
+											"let newBaseRentPrice = pm.iterationData.get(\"newBaseRentPrice\");\r",
+											"let newCurrency = pm.iterationData.get(\"newCurrency\");\r",
+											"\r",
+											"pm.test(\"Get book by id returns status OK\", function(){\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get book created by id has correct fields\", function(){\r",
+											"    var jsonData = pm.response.json();\r",
+											"    console.log(jsonData)\r",
+											"    pm.expect(jsonData.title).eql(newTitle);\r",
+											"    pm.expect(jsonData.author).eql(newAuthor);\r",
+											"    pm.expect(jsonData.isbn).eql(newISBN);\r",
+											"    pm.expect(jsonData.baseRentPrice).eql(newBaseRentPrice);\r",
+											"    pm.expect(jsonData.currency).eql(newCurrency);\r",
+											"});\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/Books/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{newBookId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Rent Transaction",
+					"item": [
+						{
+							"name": "/api/RentTransaction",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Get all rent transactions should return status code 200\", () => {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"const booksRented = response.filter((rentTransaction) => !rentTransaction.endDate);\r",
+											"if(booksRented.length > 0){\r",
+											"    pm.globals.set(\"bookRentedId\", booksRented[0].bookId)\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/RentTransaction",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"RentTransaction"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/RentTransaction",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"RentTransaction"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": 33884542,\n    \"bookId\": -93629585,\n    \"libraryBadgeId\": 15551168,\n    \"startDate\": \"2006-05-31T10:50:22.245Z\",\n    \"mustReturnDate\": \"1993-12-26T17:50:08.461Z\",\n    \"endDate\": \"2011-07-08T10:31:17.021Z\",\n    \"rentPrice\": 90752761.57925472,\n    \"currency\": \"EUR\"\n  },\n  {\n    \"id\": 57175817,\n    \"bookId\": 65269134,\n    \"libraryBadgeId\": 65345134,\n    \"startDate\": \"1965-12-17T16:48:31.405Z\",\n    \"mustReturnDate\": \"1976-01-24T09:46:03.881Z\",\n    \"endDate\": \"2015-02-26T11:07:48.772Z\",\n    \"rentPrice\": -97498973.07382849,\n    \"currency\": \"RON\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/RentTransaction/rent-book",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Rent book command should return status code 200\", () => {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Rent book command result should have valid parameters\", () => {\r",
+											"    const response = pm.response.json()\r",
+											"    pm.expect(response.rentTransactionId).greaterThan(0);\r",
+											"    const now = new Date()\r",
+											"    const mustReturnDate = new Date(response.mustReturnDate)\r",
+											"    pm.expect(mustReturnDate).greaterThan(now);    \r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"bookId\": {{newBookId}},\n  \"libraryBadgeId\": {{defaultLibraryBadgeId}}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/RentTransaction/rent-book",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"RentTransaction",
+										"rent-book"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"bookId\": 855016,\n  \"libraryBadgeId\": 21228453\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/RentTransaction/rent-book",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"RentTransaction",
+												"rent-book"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"rentTransactionId\": 63692807,\n  \"mustReturnDate\": \"2014-01-19T11:32:50.226Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/RentTransaction/return-book",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Return book command should return status code 200\", () => {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Return book command result should have valid penalty when returned in time\", () => {\r",
+											"    const response = pm.response.json()\r",
+											"    pm.expect(response.penalty).eql(0);  \r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"bookId\": {{newBookId}},\n  \"libraryBadgeId\": {{defaultLibraryBadgeId}}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/RentTransaction/return-book",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"RentTransaction",
+										"return-book"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"bookId\": 1,\n  \"libraryBadgeId\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/RentTransaction/return-book",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"RentTransaction",
+												"return-book"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"penalty\": 5.5,\n  \"currency\": \"RON\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		},
+		{
+			"key": "bookId",
+			"value": ""
+		}
+	]
+}

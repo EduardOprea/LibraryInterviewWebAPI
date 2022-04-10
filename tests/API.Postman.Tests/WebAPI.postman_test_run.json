@@ -1,0 +1,421 @@
+{
+	"id": "572d1d52-2417-4b58-8806-b2c7bb033df1",
+	"name": "WebAPI",
+	"timestamp": "2022-04-10T13:17:34.760Z",
+	"collection_id": "6859541-647fc2cf-69e4-4771-9edd-b008ed0ee72b",
+	"folder_id": 0,
+	"environment_id": "6859541-ed28f11e-4465-4f65-bf44-7c21ff846451",
+	"totalPass": 62,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "4a6942d5-6cd1-4f98-95e2-e12e9385338c",
+			"name": "/api/Books",
+			"time": 95,
+			"responseCode": {
+				"code": 422,
+				"name": "Unprocessable Entity"
+			},
+			"tests": {
+				"Book creation returns status code 422 parameters are invalid": true
+			},
+			"testPassFailCounts": {
+				"Book creation returns status code 201": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Book creation returns status code 422 parameters are invalid": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				16,
+				5,
+				5,
+				278,
+				123,
+				119,
+				95
+			],
+			"allTests": [
+				{
+					"Book creation returns status code 201": true
+				},
+				{
+					"Book creation returns status code 201": true
+				},
+				{
+					"Book creation returns status code 201": true
+				},
+				{
+					"Book creation returns status code 422 parameters are invalid": true
+				},
+				{
+					"Book creation returns status code 422 parameters are invalid": true
+				},
+				{
+					"Book creation returns status code 422 parameters are invalid": true
+				},
+				{
+					"Book creation returns status code 422 parameters are invalid": true
+				}
+			]
+		},
+		{
+			"id": "9f021e9d-9ffd-4fd8-97ff-b8c148648885",
+			"name": "/api/Books",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 7,
+					"fail": 0
+				}
+			},
+			"times": [
+				8,
+				5,
+				4,
+				5,
+				10,
+				9,
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "296bb216-dee1-4230-aaed-a7a07b22a22a",
+			"name": "/api/Books/count-by-isbn",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Get book count by isbn returns OK": true
+			},
+			"testPassFailCounts": {
+				"Get book count by isbn returns OK": {
+					"pass": 7,
+					"fail": 0
+				}
+			},
+			"times": [
+				10,
+				5,
+				4,
+				6,
+				4,
+				5,
+				5
+			],
+			"allTests": [
+				{
+					"Get book count by isbn returns OK": true
+				},
+				{
+					"Get book count by isbn returns OK": true
+				},
+				{
+					"Get book count by isbn returns OK": true
+				},
+				{
+					"Get book count by isbn returns OK": true
+				},
+				{
+					"Get book count by isbn returns OK": true
+				},
+				{
+					"Get book count by isbn returns OK": true
+				},
+				{
+					"Get book count by isbn returns OK": true
+				}
+			]
+		},
+		{
+			"id": "acb05e3b-b813-4cc3-a673-9ef86d45d25b",
+			"name": "/api/Books/:id",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {
+				"Get book by id returns status OK": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Get book created by id has correct fields": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				5,
+				6,
+				5,
+				7,
+				4,
+				4,
+				6
+			],
+			"allTests": [
+				{
+					"Get book by id returns status OK": true,
+					"Get book created by id has correct fields": true
+				},
+				{
+					"Get book by id returns status OK": true,
+					"Get book created by id has correct fields": true
+				},
+				{
+					"Get book by id returns status OK": true,
+					"Get book created by id has correct fields": true
+				},
+				{},
+				{},
+				{},
+				{}
+			]
+		},
+		{
+			"id": "e267b37f-3a43-423e-bad4-6e56b610da3e",
+			"name": "/api/RentTransaction",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Get all rent transactions should return status code 200": true
+			},
+			"testPassFailCounts": {
+				"Get all rent transactions should return status code 200": {
+					"pass": 7,
+					"fail": 0
+				}
+			},
+			"times": [
+				5,
+				8,
+				4,
+				5,
+				4,
+				5,
+				4
+			],
+			"allTests": [
+				{
+					"Get all rent transactions should return status code 200": true
+				},
+				{
+					"Get all rent transactions should return status code 200": true
+				},
+				{
+					"Get all rent transactions should return status code 200": true
+				},
+				{
+					"Get all rent transactions should return status code 200": true
+				},
+				{
+					"Get all rent transactions should return status code 200": true
+				},
+				{
+					"Get all rent transactions should return status code 200": true
+				},
+				{
+					"Get all rent transactions should return status code 200": true
+				}
+			]
+		},
+		{
+			"id": "fd5168c0-8307-48bd-b24c-cc9c660a623b",
+			"name": "/api/RentTransaction/rent-book",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Rent book command should return status code 200": true,
+				"Rent book command result should have valid parameters": true
+			},
+			"testPassFailCounts": {
+				"Rent book command should return status code 200": {
+					"pass": 7,
+					"fail": 0
+				},
+				"Rent book command result should have valid parameters": {
+					"pass": 7,
+					"fail": 0
+				}
+			},
+			"times": [
+				6,
+				7,
+				5,
+				7,
+				6,
+				5,
+				5
+			],
+			"allTests": [
+				{
+					"Rent book command should return status code 200": true,
+					"Rent book command result should have valid parameters": true
+				},
+				{
+					"Rent book command should return status code 200": true,
+					"Rent book command result should have valid parameters": true
+				},
+				{
+					"Rent book command should return status code 200": true,
+					"Rent book command result should have valid parameters": true
+				},
+				{
+					"Rent book command should return status code 200": true,
+					"Rent book command result should have valid parameters": true
+				},
+				{
+					"Rent book command should return status code 200": true,
+					"Rent book command result should have valid parameters": true
+				},
+				{
+					"Rent book command should return status code 200": true,
+					"Rent book command result should have valid parameters": true
+				},
+				{
+					"Rent book command should return status code 200": true,
+					"Rent book command result should have valid parameters": true
+				}
+			]
+		},
+		{
+			"id": "c513b6ed-79f9-4c0c-91a2-43ff182d7b8a",
+			"name": "/api/RentTransaction/return-book",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Return book command should return status code 200": true,
+				"Return book command result should have valid penalty when returned in time": true
+			},
+			"testPassFailCounts": {
+				"Return book command should return status code 200": {
+					"pass": 7,
+					"fail": 0
+				},
+				"Return book command result should have valid penalty when returned in time": {
+					"pass": 7,
+					"fail": 0
+				}
+			},
+			"times": [
+				5,
+				6,
+				5,
+				7,
+				5,
+				6,
+				6
+			],
+			"allTests": [
+				{
+					"Return book command should return status code 200": true,
+					"Return book command result should have valid penalty when returned in time": true
+				},
+				{
+					"Return book command should return status code 200": true,
+					"Return book command result should have valid penalty when returned in time": true
+				},
+				{
+					"Return book command should return status code 200": true,
+					"Return book command result should have valid penalty when returned in time": true
+				},
+				{
+					"Return book command should return status code 200": true,
+					"Return book command result should have valid penalty when returned in time": true
+				},
+				{
+					"Return book command should return status code 200": true,
+					"Return book command result should have valid penalty when returned in time": true
+				},
+				{
+					"Return book command should return status code 200": true,
+					"Return book command result should have valid penalty when returned in time": true
+				},
+				{
+					"Return book command should return status code 200": true,
+					"Return book command result should have valid penalty when returned in time": true
+				}
+			]
+		}
+	],
+	"count": 7,
+	"totalTime": 879,
+	"collection": {
+		"requests": [
+			{
+				"id": "4a6942d5-6cd1-4f98-95e2-e12e9385338c",
+				"method": "POST"
+			},
+			{
+				"id": "9f021e9d-9ffd-4fd8-97ff-b8c148648885",
+				"method": "GET"
+			},
+			{
+				"id": "296bb216-dee1-4230-aaed-a7a07b22a22a",
+				"method": "GET"
+			},
+			{
+				"id": "acb05e3b-b813-4cc3-a673-9ef86d45d25b",
+				"method": "GET"
+			},
+			{
+				"id": "e267b37f-3a43-423e-bad4-6e56b610da3e",
+				"method": "GET"
+			},
+			{
+				"id": "fd5168c0-8307-48bd-b24c-cc9c660a623b",
+				"method": "POST"
+			},
+			{
+				"id": "c513b6ed-79f9-4c0c-91a2-43ff182d7b8a",
+				"method": "PUT"
+			}
+		]
+	}
+}

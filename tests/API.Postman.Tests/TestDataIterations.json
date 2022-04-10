@@ -1,0 +1,51 @@
+[
+{
+	"newTitle": "Titlu nou",
+	"newAuthor": "Autor nou",
+	"newISBN": "978-3-4430-3784-0",
+	"newBaseRentPrice": 55,
+	"newCurrency": "RON"
+},
+{
+	"newTitle": "Titlu nou2",
+	"newAuthor": "Autor nou2",
+	"newISBN": "978-3-4430-3784-0",
+	"newBaseRentPrice": 44,
+	"newCurrency": "RON"
+},
+{
+	"newTitle": "Titlu nou2",
+	"newAuthor": "Autor nou2",
+	"newISBN": "978-3-4430-3784-0",
+	"newBaseRentPrice": 44,
+	"newCurrency": "RON"
+},
+{
+	"newTitle": "",
+	"newAuthor": "Autor nou2",
+	"newISBN": "978-3-4430-3784-0",
+	"newBaseRentPrice": 44,
+	"newCurrency": "RON"
+},
+{
+	"newTitle": "New Title",
+	"newAuthor": "",
+	"newISBN": "978-3-4430-3784-0",
+	"newBaseRentPrice": 44,
+	"newCurrency": "RON"
+},
+{
+	"newTitle": "New Title",
+	"newAuthor": "New Author",
+	"newISBN": "",
+	"newBaseRentPrice": 44,
+	"newCurrency": "RON"
+},
+{
+	"newTitle": "New Title",
+	"newAuthor": "New auhtor",
+	"newISBN": "0-6241-9490-6",
+	"newBaseRentPrice": -55,
+	"newCurrency": "RON"
+}
+]
